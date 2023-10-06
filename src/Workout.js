@@ -1,5 +1,3 @@
-import { data } from "./WorkoutCard";
-
 export default class Workout{
   constructor(name, datapoints = []){
     this.name = name;
@@ -7,6 +5,7 @@ export default class Workout{
   }
 
   addDatapoint(datapoint){
-    this.datapoints.push(datapoint); //datapoint = [data, number/weight];
+    this.datapoints.push(datapoint); //datapoint = [date, number/weight];
+    this.datapoints = this.datapoints.sort((a, b) => a[0] - b[0]);
   }
 }

@@ -51,11 +51,11 @@ export const data = {
   ],
 };
 
-function WorkoutCard() {
+function WorkoutCard(props) {
   return (
     <div className="workoutCard">
       <span className="workoutCardTitle">
-        <h2>Bench Press</h2>
+        <h2>{props.workout.name}</h2>
       </span>
       <div className="workoutCardGraph">
       <Line data={data}/>

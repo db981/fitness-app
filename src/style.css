@@ -12,6 +12,10 @@ h1, h2, h3, h4, h5, h6{
   padding: 0;
 }
 
+button:hover, input[type="submit"]:hover{
+  cursor: pointer;
+}
+
 html, body, .app{
   min-height: 100vh;
   margin: 0;
@@ -36,7 +40,7 @@ header{
   display: grid;
   justify-content: center;
   grid-template-columns: repeat(auto-fit, 500px);
-  grid-auto-rows: min-content;
+  grid-auto-rows: 341px;
   gap: 15px;
 
   padding: 15px;
@@ -44,7 +48,7 @@ header{
 
 .workoutCard{
   display: grid;
-  grid-template-rows: 45px min-content 45px;
+  grid-auto-rows: min-content;
   grid-template-columns: minmax(0, 1fr);
 
   border: 1px solid rgb(84, 84, 236);
@@ -56,7 +60,19 @@ header{
   justify-content: center;
   align-items: center;
 
+  height: 45px;
+  width: 100%;
+  position: relative;
+
   color: rgb(84, 84, 236);
+}
+
+.workoutCardTitle > button{
+  position: absolute;
+  left: 0;
+
+  border: 0;
+  background-color: transparent;
 }
 
 .workoutCardGraph{
@@ -68,7 +84,7 @@ header{
 
 .addDatapointButton{
   width: 100%;
-  height: 100%;
+  height: 45px;
 
   border-bottom-left-radius: 16px;
   border-bottom-right-radius: 16px;
@@ -79,7 +95,66 @@ header{
 }
 
 .addDatapointButton:hover{
-  cursor: pointer;
   background-color: rgb(157, 157, 250);
   color: white;
+}
+
+.newWorkoutCard{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  border: 1px solid rgb(84, 84, 236);
+  border-radius: 16px;
+}
+
+.newWorkoutButton{
+  height: 150px;
+  width: 150px;
+
+  border-color: rgb(84, 84, 236);
+  border-radius: 128px;
+  font-size: 80px;
+  color:rgb(84, 84, 236);
+
+  transition: background-color 1s, color 0.5s;
+}
+
+.newWorkoutButton:hover{
+  background-color: rgb(157, 157, 250);
+  color: white;
+}
+
+.newWorkoutForm{
+  display: grid;
+  grid-auto-rows: min-content;
+  justify-items: center;
+  align-content: space-between;
+
+  height: 100%;
+  width: 100%;
+}
+
+.newWorkoutFormField{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  justify-self: center;
+
+  width: 75%;
+
+  position: relative;
+}
+
+.newWorkoutFormField > label{
+  position: absolute;
+  top: -20px;
+  left: 0px;
+}
+
+.newWorkoutFormField > input{
+  width: 100%;
+  height: 35px;
+
+  font-size: 28px;
 }
