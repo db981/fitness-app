@@ -16,12 +16,24 @@ function App() {
     return false;
   }
 
-  const addNewWorkout = (workoutName) => {
-    let newWorkout = new Workout(workoutName);
+  const addNewWorkout = (workoutName, initialDatapoint) => {
+    let newWorkout = new Workout(workoutName, initialDatapoint);
     setWorkouts((prev) => [...prev, newWorkout]);
   }
 
+  const addNewDatapoint = (workoutName, newDatapoint) => {
+    setWorkouts((prev) => {
+      for(let i = 0; i < prev.length; i++){
+        if(prev[i].name == workoutName){
+          prev[i].addDatapoint(newDatapoint);
+        }
+      }
+      return prev;
+    })
+  }
+
   const renderWorkouts = () => {
+    console.log("render");
     let sorted = workouts.sort((a, b) => {
       if(b.datapoints.length == 0){
         return 1;
@@ -30,12 +42,12 @@ function App() {
         return -1;
       }
       else{
-        return a[a.datapoints.length - 1][0] - b[b.datapoints.length - 1][0];
+        return a.datapoints[a.datapoints.length - 1][0] - b.datapoints[b.datapoints.length - 1][0];
       }
     });
     let cards = [];
     for(const workout of sorted){
-      cards.push(<WorkoutCard workout={workout} key={uuidv4()}></WorkoutCard>);
+      cards.push(<WorkoutCard workout={workout} addNewDatapoint={addNewDatapoint} key={uuidv4()}></WorkoutCard>);
     }
     return cards;
   }

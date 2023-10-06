@@ -6,8 +6,10 @@ function NewWorkoutCard(props) {
 
   const submitForm = (e) => {
     e.preventDefault();
-    let workoutNameInput = e.target.querySelector("#workoutName");
-    props.addNewWorkout(workoutNameInput.value);
+    let workoutName = e.target.querySelector("#workoutName").value;
+    let datapointDate = new Date(e.target.querySelector("#datapointDate").value);
+    let datapointValue = e.target.querySelector("#datapointValue").value;
+    props.addNewWorkout(workoutName, [datapointDate, datapointValue]);
     setFormVisible(false);
   }
 
@@ -31,9 +33,17 @@ function NewWorkoutCard(props) {
             </button>
             <h2>New Workout</h2>
           </span>
-          <span className="newWorkoutFormField">
+          <span className="formField">
             <label htmlFor="workoutName">Workout Name</label>
             <input type="text" id="workoutName" name="workoutName" maxLength={23} onInput={checkNameValidity} autoComplete="off" required></input>
+          </span>
+          <span className="formField">
+            <label htmlFor="datapointDate">Datapoint Date</label>
+            <input type="date" id="datapointDate" name="datapointDate" required></input>
+          </span>
+          <span className="formField">
+            <label htmlFor="datapointValue">Datapoint Value</label>
+            <input type="number" id="datapointValue" name="datapointValue" required></input>
           </span>
           <input type="submit" className="addDatapointButton" value="Save Workout"></input>
         </form>
