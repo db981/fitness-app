@@ -2,10 +2,24 @@ import WorkoutCard from "./WorkoutCard";
 import NewWorkoutCard from "./NewWorkoutCard";
 import Workout from "./Workout";
 import { v4 as uuidv4 } from "uuid";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 function App() {
   const[workouts, setWorkouts] = useState([]);
+
+  useEffect(() => {
+    let loaded = JSON.parse(localStorage.getItem("workouts"));
+    for(let i = 0; i < loaded.length; i++){
+      loaded[i].datapoints = loaded[i].datapoints.map(((datapoint) => [new Date(datapoint[0]), datapoint[1]]));
+    }
+    setWorkouts(loaded);
+  }, []);
+
+  useEffect(() => {
+    if(workouts.length){
+      localStorage.setItem("workouts", JSON.stringify(workouts));
+    }
+  }, [workouts]);
 
   const workoutNameExists = (workoutName) => {
     for(const workout of workouts){
@@ -17,36 +31,28 @@ function App() {
   }
 
   const addNewWorkout = (workoutName, initialDatapoint) => {
-    let newWorkout = new Workout(workoutName, initialDatapoint);
+    let newWorkout = new Workout(workoutName, [initialDatapoint]);
     setWorkouts((prev) => [...prev, newWorkout]);
   }
 
   const addNewDatapoint = (workoutName, newDatapoint) => {
     setWorkouts((prev) => {
-      for(let i = 0; i < prev.length; i++){
-        if(prev[i].name == workoutName){
-          prev[i].addDatapoint(newDatapoint);
+      return prev.map((workout) => {
+        if(workout.name == workoutName){
+          workout.addDatapoint(newDatapoint);
         }
-      }
-      return prev;
+        return workout;
+      });
     })
   }
 
+  const deleteWorkout = (workoutName) => {
+    setWorkouts((prev) => prev.filter((workout) => workout.name != workoutName));
+  }
+
   const renderWorkouts = () => {
-    console.log("render");
-    let sorted = workouts.sort((a, b) => {
-      if(b.datapoints.length == 0){
-        return 1;
-      }
-      else if(b.datapoints.length == 0){
-        return -1;
-      }
-      else{
-        return a.datapoints[a.datapoints.length - 1][0] - b.datapoints[b.datapoints.length - 1][0];
-      }
-    });
     let cards = [];
-    for(const workout of sorted){
+    for(const workout of workouts){
       cards.push(<WorkoutCard workout={workout} addNewDatapoint={addNewDatapoint} key={uuidv4()}></WorkoutCard>);
     }
     return cards;

@@ -1,7 +1,7 @@
 export default class Workout{
-  constructor(name, initialDatapoint){
+  constructor(name, datapoints){
     this.name = name;
-    this.datapoints = [initialDatapoint];
+    this.datapoints = datapoints;
   }
 
   addDatapoint(datapoint){
