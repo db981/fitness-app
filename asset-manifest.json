@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/fitness-app/static/css/main.0a7636e4.css",
+    "main.js": "/fitness-app/static/js/main.b8a40781.js",
+    "static/media/Montserrat-VariableFont_wght.ttf": "/fitness-app/static/media/Montserrat-VariableFont_wght.7e687123cd4528224ce5.ttf",
+    "index.html": "/fitness-app/index.html",
+    "static/media/check.svg": "/fitness-app/static/media/check.df14bcbaca89f41dce413360f4deec9b.svg",
+    "static/media/back-arrow.svg": "/fitness-app/static/media/back-arrow.25c745034ac4e52706028809e045fcdb.svg",
+    "main.0a7636e4.css.map": "/fitness-app/static/css/main.0a7636e4.css.map",
+    "main.b8a40781.js.map": "/fitness-app/static/js/main.b8a40781.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.0a7636e4.css",
+    "static/js/main.b8a40781.js"
+  ]
+}
