@@ -9,16 +9,17 @@ function App() {
 
   useEffect(() => {
     let loaded = JSON.parse(localStorage.getItem("workouts"));
-    for(let i = 0; i < loaded.length; i++){
-      loaded[i].datapoints = loaded[i].datapoints.map(((datapoint) => [new Date(datapoint[0]), datapoint[1]]));
+    if(loaded?.length){
+      for(let i = 0; i < loaded.length; i++){
+        loaded[i].datapoints = loaded[i].datapoints.map(((datapoint) => [new Date(datapoint[0]), datapoint[1]]));
+        loaded[i] = new Workout(loaded[i].name, loaded[i].datapoints);
+      }
+      setWorkouts(loaded);
     }
-    setWorkouts(loaded);
   }, []);
 
   useEffect(() => {
-    if(workouts.length){
-      localStorage.setItem("workouts", JSON.stringify(workouts));
-    }
+    localStorage.setItem("workouts", JSON.stringify(workouts));
   }, [workouts]);
 
   const workoutNameExists = (workoutName) => {
