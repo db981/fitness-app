@@ -83,9 +83,7 @@ function WorkoutCard(props) {
         </span>
         <button type="submit"><img src={CheckMark}></img></button>
       </form>
-      <div className="workoutCardGraph">
-        {chartData ? <Line options={options} data={chartData} /> : null}
-      </div>
+      {chartData ? <Line options={options} data={chartData} /> : null}
       <button className="addDatapointButton" onClick={() => setShowForm(!showForm)}>Add Datapoint</button>
     </div>
   )

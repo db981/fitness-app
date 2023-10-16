@@ -1,6 +1,7 @@
 import WorkoutCard from "./WorkoutCard";
 import NewWorkoutCard from "./NewWorkoutCard";
 import Workout from "./Workout";
+import DownloadIcon from "./images/download-icon.svg";
 import { v4 as uuidv4 } from "uuid";
 import { useEffect, useState } from "react";
 
@@ -51,6 +52,10 @@ function App() {
     setWorkouts((prev) => prev.filter((workout) => workout.name != workoutName));
   }
 
+  const downloadWorkouts = () => {
+    
+  }
+
   const renderWorkouts = () => {
     let cards = [];
     for(const workout of workouts){
@@ -63,6 +68,7 @@ function App() {
     <div className="app">
       <header>
         <h1>Fitness Tracker</h1>
+        <img src={DownloadIcon} className="downloadIcon" onClick={downloadWorkouts}></img>
       </header>
       <div className="workoutCardArea">
         {renderWorkouts()}
