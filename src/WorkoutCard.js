@@ -1,4 +1,5 @@
 import CheckMark from "./images/check.svg";
+import DeleteIcon from "./images/delete.svg";
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -71,6 +72,7 @@ function WorkoutCard(props) {
     <div className="workoutCard">
       <span className="workoutCardTitle">
         <h2>{props.workout.name}</h2>
+        <img src={DeleteIcon} className="workoutDeleteButton" onClick={(e) => props.deleteWorkout(props.workout.name)}></img>
       </span>
       <form className={showForm ? "datapointForm formVisible" : "datapointForm formInvisible"} onSubmit={submitForm}>
         <span className="formField">

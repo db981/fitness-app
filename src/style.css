@@ -94,6 +94,16 @@ header{
   color: rgb(84, 84, 236);
 }
 
+.workoutDeleteButton{
+  position: absolute;
+  right: 10px;
+  height: 80%;
+}
+
+.workoutDeleteButton:hover{
+  cursor: pointer;
+}
+
 .workoutCardTitle > button{
   position: absolute;
   left: 0;

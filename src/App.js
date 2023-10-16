@@ -55,7 +55,11 @@ function App() {
   }
 
   const deleteWorkout = (workoutName) => {
-    setWorkouts((prev) => prev.filter((workout) => workout.name != workoutName));
+    if(window.confirm(`Are you sure you want to delete ${workoutName} data?`)){
+      setWorkouts((prev) => {
+        return prev.filter((workout) => workout.name != workoutName);
+      })
+    }
   }
 
   const downloadWorkouts = () => {
@@ -72,6 +76,9 @@ function App() {
   const handleUpload = () => {
     if(uploadRef.current.files.length){
       let file = uploadRef.current.files[0];
+      if(!file.name.includes("fitness-app-save")){
+        return;
+      }
       let fileReader = new FileReader();
       fileReader.readAsText(file, 'UTF-8');
       fileReader.onload = (e) => {
@@ -86,7 +93,7 @@ function App() {
   const renderWorkouts = () => {
     let cards = [];
     for(const workout of workouts){
-      cards.push(<WorkoutCard workout={workout} addNewDatapoint={addNewDatapoint} key={uuidv4()}></WorkoutCard>);
+      cards.push(<WorkoutCard workout={workout} addNewDatapoint={addNewDatapoint} deleteWorkout={deleteWorkout} key={uuidv4()}></WorkoutCard>);
     }
     return cards;
   }
