@@ -46,7 +46,14 @@ header{
   height: 75%;
 }
 
-.downloadIcon:hover{
+.uploadIcon{
+  position: absolute;
+  right: 75px;
+  height: 75%;
+  rotate: 180deg;
+}
+
+.downloadIcon:hover, .uploadIcon:hover{
   cursor: pointer;
 }
 
