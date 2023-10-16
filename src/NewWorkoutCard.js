@@ -35,7 +35,7 @@ function NewWorkoutCard(props) {
           </span>
           <span className="formField">
             <label htmlFor="workoutName">Workout Name</label>
-            <input type="text" id="workoutName" name="workoutName" maxLength={23} onInput={checkNameValidity} autoComplete="off" required></input>
+            <input type="text" id="workoutName" name="workoutName" maxLength={35} onInput={checkNameValidity} autoComplete="off" required></input>
           </span>
           <span className="formField">
             <label htmlFor="datapointDate">Datapoint Date</label>
