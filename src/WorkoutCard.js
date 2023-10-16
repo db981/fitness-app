@@ -25,34 +25,15 @@ ChartJS.register(
 export const options = {
   responsive: true,
   maintainAspectRatio: true,
-  plugins: {
-    title: {
-      display: true,
-      text: 'Chart.js Line Chart',
-    },
-  },
+  scales: {
+    y:
+      {
+        ticks: {
+          stepSize: 5
+        }
+      }
+  }
 };
-/*
-const labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
-
-export const data = {
-  labels,
-  datasets: [
-    {
-      label: 'Dataset 1',
-      data: labels.map(() => Math.random() * 100),
-      borderColor: 'rgb(255, 99, 132)',
-      backgroundColor: 'rgba(255, 99, 132, 0.5)',
-    },
-    {
-      label: 'Dataset 2',
-      data: labels.map(() => Math.random() * 100),
-      borderColor: 'rgb(53, 162, 235)',
-      backgroundColor: 'rgba(53, 162, 235, 0.5)',
-    },
-  ],
-};
-*/
 
 function WorkoutCard(props) {
   const [chartData, setChartData] = useState(null);
@@ -76,11 +57,11 @@ function WorkoutCard(props) {
       }
       setChartData(data);
     }
-  }, [props.workout?.datapoints.length]);
+  }, [props.workout?.datapoints?.length]);
 
   const submitForm = (e) => {
     e.preventDefault();
-    let datapointDate = new Date(e.target.querySelector("#datapointDate").value);
+    let datapointDate = new Date(e.target.querySelector("#datapointDate").value.replaceAll("-", "/"));
     let datapointValue = e.target.querySelector("#datapointValue").value;
     props.addNewDatapoint(props.workout.name, [datapointDate, datapointValue]);
     setShowForm(false);
@@ -103,7 +84,7 @@ function WorkoutCard(props) {
         <button type="submit"><img src={CheckMark}></img></button>
       </form>
       <div className="workoutCardGraph">
-        {chartData ? <Line data={chartData} /> : null}
+        {chartData ? <Line options={options} data={chartData} /> : null}
       </div>
       <button className="addDatapointButton" onClick={() => setShowForm(!showForm)}>Add Datapoint</button>
     </div>

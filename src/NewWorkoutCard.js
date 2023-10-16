@@ -7,7 +7,7 @@ function NewWorkoutCard(props) {
   const submitForm = (e) => {
     e.preventDefault();
     let workoutName = e.target.querySelector("#workoutName").value;
-    let datapointDate = new Date(e.target.querySelector("#datapointDate").value);
+    let datapointDate = new Date(e.target.querySelector("#datapointDate").value.replaceAll("-", "/"));
     let datapointValue = e.target.querySelector("#datapointValue").value;
     props.addNewWorkout(workoutName, [datapointDate, datapointValue]);
     setFormVisible(false);
