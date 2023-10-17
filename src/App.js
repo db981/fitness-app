@@ -11,19 +11,19 @@ function App() {
   const downloadRef = useRef(null);
   const uploadRef = useRef(null);
 
-  useEffect(() => {
+  useEffect(() => { //load workouts from localstorage on startup
     let loaded = JSON.parse(localStorage.getItem("workouts"));
     if(loaded?.length){
       loadWorkouts(loaded);
     }
   }, []);
 
-  useEffect(() => {
+  useEffect(() => { //save to localstorage whenever workouts are modified, update date list
     localStorage.setItem("workouts", JSON.stringify(workouts));
     loadWorkoutDates();
   }, [workouts]);
 
-  const loadWorkouts = (loaded) => {
+  const loadWorkouts = (loaded) => { //revive workout json as new workout objects to restore class functionality
     for(let i = 0; i < loaded.length; i++){
       loaded[i].datapoints = loaded[i].datapoints.map(((datapoint) => [new Date(datapoint[0]), datapoint[1]]));
       loaded[i] = new Workout(loaded[i].name, loaded[i].datapoints);
@@ -31,7 +31,7 @@ function App() {
     setWorkouts(loaded);
   }
 
-  const loadWorkoutDates = () => {
+  const loadWorkoutDates = () => { //generate object containing unique workout dates
     const dates = {};
     for(let i = 0; i < workouts.length; i++){
       for(const datapoint of workouts[i].datapoints){
@@ -74,13 +74,13 @@ function App() {
       setWorkouts((prev) => {
         return prev.filter((workout) => workout.name != workoutName);
       });
-      if(workoutDates[selectedDate].includes(workoutName) && workoutDates[selectedDate].length == 1){
+      if(workoutDates[selectedDate].includes(workoutName) && workoutDates[selectedDate].length == 1){ //if only workout on date, return to all workouts view
         changeWorkouts({target: {value: 'all'}});
       }
     }
   }
 
-  const downloadWorkouts = () => {
+  const downloadWorkouts = () => { //download as local file
     var dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(workouts));
     downloadRef.current.setAttribute("href", dataStr);
     downloadRef.current.setAttribute("download", `fitness-app-save${new Date().toISOString().split('T')[0]}`);
@@ -108,7 +108,7 @@ function App() {
     }
   }
 
-  const changeWorkouts = (e) => {
+  const changeWorkouts = (e) => { //change selected date to show workouts from
     if(e.target.value === 'all'){
       setSelectedDate(null);
     }
@@ -117,7 +117,7 @@ function App() {
     }
   }
 
-  const renderWorkoutDates = () => {
+  const renderWorkoutDates = () => { //options for date select dropdown
     let dates = [];
     for(const date of Object.keys(workoutDates).sort((a, b) => new Date(b) - new Date(a))){
       dates.push(<option key={date} value={date}>{new Date(date).toISOString().slice(0, 10)}</option>)

@@ -40,7 +40,7 @@ function WorkoutCard(props) {
   const [chartData, setChartData] = useState(null);
   const [showForm, setShowForm] = useState(false);
 
-  useEffect(() => {
+  useEffect(() => { //generate data object for Line chart component
     if (props.workout?.datapoints.length) {
       let labels = props.workout.datapoints.map((datapoint) => {
         return (`${datapoint[0].getDate()}/${datapoint[0].getMonth() + 1}/${datapoint[0].getFullYear()}`);
@@ -60,7 +60,7 @@ function WorkoutCard(props) {
     }
   }, [props.workout?.datapoints?.length]);
 
-  const submitForm = (e) => {
+  const submitForm = (e) => { //create new datapoint
     e.preventDefault();
     let datapointDate = new Date(e.target.querySelector("#datapointDate").value.replaceAll("-", "/"));
     let datapointValue = e.target.querySelector("#datapointValue").value;
