@@ -6,6 +6,8 @@ import { useEffect, useState, useRef } from "react";
 
 function App() {
   const[workouts, setWorkouts] = useState([]);
+  const[workoutDates, setWorkoutDates] = useState({});
+  const[selectedDate, setSelectedDate] = useState(null);
   const downloadRef = useRef(null);
   const uploadRef = useRef(null);
 
@@ -18,6 +20,7 @@ function App() {
 
   useEffect(() => {
     localStorage.setItem("workouts", JSON.stringify(workouts));
+    loadWorkoutDates();
   }, [workouts]);
 
   const loadWorkouts = (loaded) => {
@@ -26,6 +29,19 @@ function App() {
       loaded[i] = new Workout(loaded[i].name, loaded[i].datapoints);
     }
     setWorkouts(loaded);
+  }
+
+  const loadWorkoutDates = () => {
+    const dates = {};
+    for(let i = 0; i < workouts.length; i++){
+      for(const datapoint of workouts[i].datapoints){
+        if(!dates[datapoint[0]]){
+          dates[datapoint[0]] = [];
+        }
+        dates[datapoint[0]].push(workouts[i].name);
+      }
+    }
+    setWorkoutDates(dates);
   }
 
   const workoutNameExists = (workoutName) => {
@@ -50,14 +66,17 @@ function App() {
         }
         return workout;
       });
-    })
+    });
   }
 
   const deleteWorkout = (workoutName) => {
     if(window.confirm(`Are you sure you want to delete ${workoutName} data?`)){
       setWorkouts((prev) => {
         return prev.filter((workout) => workout.name != workoutName);
-      })
+      });
+      if(workoutDates[selectedDate].includes(workoutName) && workoutDates[selectedDate].length == 1){
+        changeWorkouts({target: {value: 'all'}});
+      }
     }
   }
 
@@ -89,10 +108,29 @@ function App() {
     }
   }
 
+  const changeWorkouts = (e) => {
+    if(e.target.value === 'all'){
+      setSelectedDate(null);
+    }
+    else{
+      setSelectedDate(e.target.value);
+    }
+  }
+
+  const renderWorkoutDates = () => {
+    let dates = [];
+    for(const date of Object.keys(workoutDates).sort((a, b) => new Date(b) - new Date(a))){
+      dates.push(<option key={date} value={date}>{new Date(date).toISOString().slice(0, 10)}</option>)
+    }
+    return dates;
+  }
+
   const renderWorkouts = () => {
     let cards = [];
     for(const workout of workouts){
-      cards.push(<WorkoutCard workout={workout} addNewDatapoint={addNewDatapoint} deleteWorkout={deleteWorkout} key={workout.key}></WorkoutCard>);
+      if(selectedDate == null || workoutDates[selectedDate]?.includes(workout.name)){
+        cards.push(<WorkoutCard workout={workout} addNewDatapoint={addNewDatapoint} deleteWorkout={deleteWorkout} key={workout.key}></WorkoutCard>);
+      }
     }
     return cards;
   }
@@ -107,6 +145,10 @@ function App() {
         <input type="file" style={{display: "none"}} onChange={handleUpload} ref={uploadRef}></input>
       </header>
       <div className="workoutCardArea">
+        <select className="workoutSelect" onChange={changeWorkouts}>
+          <option value="all" defaultChecked>All Workouts</option>
+          {renderWorkoutDates()}
+        </select>
         {renderWorkouts()}
         <NewWorkoutCard addNewWorkout={addNewWorkout} workoutNameExists={workoutNameExists}></NewWorkoutCard>
       </div>

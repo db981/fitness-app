@@ -69,6 +69,13 @@ header{
   background-color: white;
 }
 
+.workoutSelect{
+  grid-column: 1 / -1;
+  width: 250px;
+  
+  font-size: 24px;
+}
+
 .workoutCard{
   display: grid;
   grid-auto-rows: min-content;

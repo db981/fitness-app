@@ -27,6 +27,7 @@ function NewWorkoutCard(props) {
     <div className="newWorkoutCard">
       {formVisible ?
         <form className="newWorkoutForm" onSubmit={submitForm}>
+          <input type="submit" style={{display: "none"}}></input>
           <span className="workoutCardTitle">
             <button onClick={() => setFormVisible(false)}>
               <img src={BackArrow} alt="Cancel add new workout"></img>

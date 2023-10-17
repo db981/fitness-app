@@ -43,7 +43,7 @@ function WorkoutCard(props) {
   useEffect(() => {
     if (props.workout?.datapoints.length) {
       let labels = props.workout.datapoints.map((datapoint) => {
-        return (`${datapoint[0].getDate()}/${datapoint[0].getMonth()}/${datapoint[0].getFullYear()}`);
+        return (`${datapoint[0].getDate()}/${datapoint[0].getMonth() + 1}/${datapoint[0].getFullYear()}`);
       });
       let data = {
         labels,
