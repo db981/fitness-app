@@ -2,7 +2,6 @@ import WorkoutCard from "./WorkoutCard";
 import NewWorkoutCard from "./NewWorkoutCard";
 import Workout from "./Workout";
 import DownloadIcon from "./images/download-icon.svg";
-import { v4 as uuidv4 } from "uuid";
 import { useEffect, useState, useRef } from "react";
 
 function App() {
@@ -93,7 +92,7 @@ function App() {
   const renderWorkouts = () => {
     let cards = [];
     for(const workout of workouts){
-      cards.push(<WorkoutCard workout={workout} addNewDatapoint={addNewDatapoint} deleteWorkout={deleteWorkout} key={uuidv4()}></WorkoutCard>);
+      cards.push(<WorkoutCard workout={workout} addNewDatapoint={addNewDatapoint} deleteWorkout={deleteWorkout} key={workout.key}></WorkoutCard>);
     }
     return cards;
   }

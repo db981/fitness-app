@@ -159,6 +159,8 @@ header{
 }
 
 .addDatapointButton{
+  align-self: flex-end;
+
   width: 100%;
   height: 45px;
 

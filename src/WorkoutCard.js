@@ -33,7 +33,7 @@ export const options = {
           stepSize: 5
         }
       }
-  }
+  },
 };
 
 function WorkoutCard(props) {
