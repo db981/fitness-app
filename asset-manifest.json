@@ -1,18 +1,18 @@
 {
   "files": {
-    "main.css": "/fitness-app/static/css/main.ac520521.css",
-    "main.js": "/fitness-app/static/js/main.42159109.js",
+    "main.css": "/fitness-app/static/css/main.3c353291.css",
+    "main.js": "/fitness-app/static/js/main.30ff8773.js",
     "static/media/Montserrat-VariableFont_wght.ttf": "/fitness-app/static/media/Montserrat-VariableFont_wght.7e687123cd4528224ce5.ttf",
     "static/media/delete.svg": "/fitness-app/static/media/delete.29de6fd8d98b3c03eca177ae373f094f.svg",
     "index.html": "/fitness-app/index.html",
     "static/media/download-icon.svg": "/fitness-app/static/media/download-icon.f60794cb04ab972830277e04a20001d1.svg",
     "static/media/check.svg": "/fitness-app/static/media/check.df14bcbaca89f41dce413360f4deec9b.svg",
     "static/media/back-arrow.svg": "/fitness-app/static/media/back-arrow.25c745034ac4e52706028809e045fcdb.svg",
-    "main.ac520521.css.map": "/fitness-app/static/css/main.ac520521.css.map",
-    "main.42159109.js.map": "/fitness-app/static/js/main.42159109.js.map"
+    "main.3c353291.css.map": "/fitness-app/static/css/main.3c353291.css.map",
+    "main.30ff8773.js.map": "/fitness-app/static/js/main.30ff8773.js.map"
   },
   "entrypoints": [
-    "static/css/main.ac520521.css",
-    "static/js/main.42159109.js"
+    "static/css/main.3c353291.css",
+    "static/js/main.30ff8773.js"
   ]
 }
