@@ -99,6 +99,11 @@ header{
   width: 100%;
 
   color: rgb(84, 84, 236);
+  user-select: none;
+}
+
+.workoutCardTitle:hover{
+  cursor: pointer;
 }
 
 .workoutDeleteButton{

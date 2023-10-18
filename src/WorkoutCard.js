@@ -10,7 +10,7 @@ import {
   Tooltip,
   Legend,
 } from 'chart.js';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Line } from 'react-chartjs-2';
 
 ChartJS.register(
@@ -39,6 +39,8 @@ export const options = {
 function WorkoutCard(props) {
   const [chartData, setChartData] = useState(null);
   const [showForm, setShowForm] = useState(false);
+  const [draggingOffset, setDraggingOffset] = useState(null);
+  const card = useRef(null);
 
   useEffect(() => { //generate data object for Line chart component
     if (props.workout?.datapoints.length) {
@@ -68,9 +70,36 @@ function WorkoutCard(props) {
     setShowForm(false);
   }
 
+  const startDraggingCard = (e) => {
+    let offsetX = card.current.offsetLeft - e.clientX;
+    let offsetY = card.current.offsetTop - e.clientY;
+    card.current.style.position = "absolute";
+    card.current.style.zIndex = "99";
+    card.current.style.left = e.clientX + offsetX + "px";
+    card.current.style.top = e.clientY + offsetY + "px";
+    setDraggingOffset([offsetX, offsetY]);
+  }
+
+  const stopDraggingCard = (e) => {
+    card.current.style.position = "relative";
+    card.current.style.zIndex = "1";
+    card.current.style.left = null;
+    card.current.style.top = null;
+    setDraggingOffset(null);
+  }
+
+  const dragCard = (e) => {
+    if(!draggingOffset){
+      return;
+    }
+    card.current.style.left = e.clientX + draggingOffset[0] + "px";
+    card.current.style.top = e.clientY + draggingOffset[1] + "px";
+    console.log();
+  }
+
   return (
-    <div className="workoutCard">
-      <span className="workoutCardTitle">
+    <div className="workoutCard" ref={card} onMouseUp={stopDraggingCard} onMouseMove={dragCard} onMouseLeave={stopDraggingCard}>
+      <span className="workoutCardTitle" onMouseDown={startDraggingCard}>
         <h2>{props.workout.name}</h2>
         <img src={DeleteIcon} className="workoutDeleteButton" onClick={(e) => props.deleteWorkout(props.workout.name)}></img>
       </span>
