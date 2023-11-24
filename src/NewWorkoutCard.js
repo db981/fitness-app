@@ -20,7 +20,7 @@ function NewWorkoutCard(props) {
 
   return (
     <div className="workoutCard">
-      <span className="workoutCardTitle">
+      <span className="workoutTitle">
         <h2>New Workout</h2>
       </span>
       <form className="workoutForm" id="workoutForm" onSubmit={submitForm}>

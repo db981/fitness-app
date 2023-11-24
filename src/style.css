@@ -85,6 +85,7 @@ header {
 
   header {
     justify-content: left;
+    font-size: 75%;
   }
 }
 
@@ -102,7 +103,7 @@ header {
   border-radius: 16px;
 }
 
-.workoutCardTitle {
+.workoutTitle {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -110,11 +111,6 @@ header {
   height: 100%;
 
   color: rgb(84, 84, 236);
-}
-
-.cardMiddle {
-  position: relative;
-  min-height: 200px;
 }
 
 .workoutDelete {
@@ -128,7 +124,14 @@ header {
   cursor: pointer;
 }
 
+.cardMiddle {
+  position: relative;
+  min-height: 200px;
+}
+
 .workoutBottomButton {
+  align-self: flex-end;
+  height: 100%;
   width: 100%;
 
   border-bottom-left-radius: 16px;
@@ -136,6 +139,7 @@ header {
   border: transparent;
 
   font-size: 20px;
+  background-color: #EFEFEF;
   transition: background-color 1s, color 0.5s;
 }
 
@@ -167,6 +171,17 @@ header {
   font-size: 24px;
 }
 
+.workoutForm {
+  display: grid;
+  grid-auto-rows: 30px;
+  justify-items: center;
+  align-content: space-evenly;
+  gap: 20px;
+
+  padding-bottom: 10px;
+  font-size: 24px;
+}
+
 .formField {
   display: flex;
   justify-content: center;
@@ -181,9 +196,10 @@ header {
 }
 
 .formField>input {
-  width: 70%;
+  min-width: 70%;
   height: 100%;
   box-sizing: border-box;
+  font-size: 100%;
 }
 
 .formSaveButton {
@@ -203,195 +219,3 @@ header {
 .formSaveButton>img {
   height: 50%;
 }
-
-.workoutForm {
-  display: grid;
-  grid-auto-rows: 30px;
-  justify-items: center;
-  align-content: space-evenly;
-  gap: 20px;
-
-  padding-bottom: 10px;
-  font-size: 24px;
-}
-
-/*
-
-.workoutCard{
-  display: grid;
-  grid-auto-rows: min-content;
-  grid-template-columns: minmax(0, 1fr);
-
-  position: relative;
-  max-width: 90vw;
-
-  border: 1px solid rgb(84, 84, 236);
-  border-radius: 16px;
-  background-color: white;
-}
-
-.workoutCardTitle{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  position: relative;
-  height: 45px;
-  width: 100%;
-
-  color: rgb(84, 84, 236);
-  user-select: none;
-}
-
-.workoutCardTitle:hover{
-  cursor: pointer;
-}
-
-.workoutDeleteButton{
-  position: absolute;
-  right: 10px;
-  height: 80%;
-}
-
-.workoutDeleteButton:hover{
-  cursor: pointer;
-}
-
-.workoutCardTitle > button{
-  position: absolute;
-  left: 0;
-
-  border: 0;
-  background-color: transparent;
-}
-
-.datapointForm{
-  height: calc(100% - 90px);
-  display: grid;
-  grid-auto-rows: auto;
-  justify-items: center;
-  align-content: center;
-  gap: 35px;
-
-  position: absolute;
-  width: 100%;
-  transition: bottom 0.5s, opacity 0.25s;
-}
-
-.formVisible{
-  bottom: 45px;
-
-  opacity: 1;
-  background-color: white;
-}
-
-.formInvisible{
-  bottom: -25px;
-
-  opacity: 0;
-
-  pointer-events: none;
-}
-
-.datapointForm > button{
-  height: 60px;
-  width: 60px;
-
-  border-radius: 32px;
-  border-color: rgb(84, 84, 236);
-
-  transition: background-color 1s;
-}
-
-.datapointForm > button:hover{
-  background-color: rgb(157, 157, 250);
-}
-
-.datapointForm > button > img{
-  height: 50%;
-}
-
-.addDatapointButton{
-  align-self: flex-end;
-
-  width: 100%;
-  height: 45px;
-
-  border-bottom-left-radius: 16px;
-  border-bottom-right-radius: 16px;
-  border: transparent;
-
-  font-size: 20px;
-
-  transition: background-color 1s, color 0.5s;
-  z-index: 2;
-}
-
-.addDatapointButton:hover{
-  background-color: rgb(157, 157, 250);
-  color: white;
-}
-
-.newWorkoutCard{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  min-height: 300px;
-  max-width: 90vw;
-  border: 1px solid rgb(84, 84, 236);
-  border-radius: 16px;
-}
-
-.newWorkoutButton{
-  height: 150px;
-  width: 150px;
-
-  border-color: rgb(84, 84, 236);
-  border-radius: 128px;
-
-  font-size: 80px;
-  color:rgb(84, 84, 236);
-
-  transition: background-color 1s, color 0.5s;
-}
-
-.newWorkoutButton:hover{
-  background-color: rgb(157, 157, 250);
-  color: white;
-}
-
-.newWorkoutForm{
-  display: grid;
-  grid-auto-rows: min-content;
-  justify-items: center;
-  align-content: space-between;
-
-  height: 100%;
-  width: 100%;
-}
-
-.formField{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  justify-self: center;
-
-  position: relative;
-  width: 75%;
-}
-
-.formField > label{
-  position: absolute;
-  top: -20px;
-  left: 0px;
-}
-
-.formField > input{
-  width: 100%;
-  height: 35px;
-
-  font-size: 28px;
-}
-
-*/

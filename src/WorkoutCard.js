@@ -94,36 +94,11 @@ function WorkoutCard(props) {
     }
     card.current.style.left = e.clientX + draggingOffset[0] + "px";
     card.current.style.top = e.clientY + draggingOffset[1] + "px";
-    console.log();
   }
-
-  /*
-  return (
-    <div className="workoutCard" ref={card} onMouseUp={stopDraggingCard} onMouseMove={dragCard} onMouseLeave={stopDraggingCard}>
-      <span className="workoutCardTitle" onMouseDown={startDraggingCard}>
-        <h2>{props.workout.name}</h2>
-        <img src={DeleteIcon} className="workoutDeleteButton" onClick={(e) => props.deleteWorkout(props.workout.name)}></img>
-      </span>
-      <form className={showForm ? "datapointForm formVisible" : "datapointForm formInvisible"} onSubmit={submitForm}>
-        <span className="formField">
-            <label htmlFor="datapointDate">Datapoint Date</label>
-            <input type="date" id="datapointDate" name="datapointDate" required></input>
-          </span>
-        <span className="formField">
-          <label htmlFor="datapointValue">Datapoint Value</label>
-          <input type="number" id="datapointValue" name="datapointValue" required></input>
-        </span>
-        <button type="submit"><img src={CheckMark}></img></button>
-      </form>
-      {chartData ? <Line options={options} data={chartData} /> : null}
-      <button className="addDatapointButton" onClick={() => setShowForm(!showForm)}>Add Datapoint</button>
-    </div>
-  )
-  */
 
   return (
     <div className="workoutCard">
-      <span className="workoutCardTitle">
+      <span className="workoutTitle">
         <h2>{props.workout.name}</h2>
         <img src={DeleteIcon} className="workoutDelete" onClick={(e) => props.deleteWorkout(props.workout.name)}></img>
       </span>

@@ -74,7 +74,7 @@ function App() {
       setWorkouts((prev) => {
         return prev.filter((workout) => workout.name != workoutName);
       });
-      if (workoutDates[selectedDate].includes(workoutName) && workoutDates[selectedDate].length == 1) { //if only workout on date, return to all workouts view
+      if (workoutDates[selectedDate]?.includes(workoutName) && workoutDates[selectedDate].length == 1) { //if only workout on date, return to all workouts view
         changeWorkouts({ target: { value: 'all' } });
       }
     }
