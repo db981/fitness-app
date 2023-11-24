@@ -28,11 +28,11 @@ export const options = {
   maintainAspectRatio: true,
   scales: {
     y:
-      {
-        ticks: {
-          stepSize: 5
-        }
+    {
+      ticks: {
+        stepSize: 5
       }
+    }
   },
 };
 
@@ -89,7 +89,7 @@ function WorkoutCard(props) {
   }
 
   const dragCard = (e) => {
-    if(!draggingOffset){
+    if (!draggingOffset) {
       return;
     }
     card.current.style.left = e.clientX + draggingOffset[0] + "px";
@@ -97,6 +97,7 @@ function WorkoutCard(props) {
     console.log();
   }
 
+  /*
   return (
     <div className="workoutCard" ref={card} onMouseUp={stopDraggingCard} onMouseMove={dragCard} onMouseLeave={stopDraggingCard}>
       <span className="workoutCardTitle" onMouseDown={startDraggingCard}>
@@ -116,6 +117,31 @@ function WorkoutCard(props) {
       </form>
       {chartData ? <Line options={options} data={chartData} /> : null}
       <button className="addDatapointButton" onClick={() => setShowForm(!showForm)}>Add Datapoint</button>
+    </div>
+  )
+  */
+
+  return (
+    <div className="workoutCard">
+      <span className="workoutCardTitle">
+        <h2>{props.workout.name}</h2>
+        <img src={DeleteIcon} className="workoutDelete" onClick={(e) => props.deleteWorkout(props.workout.name)}></img>
+      </span>
+      <div className="cardMiddle">
+        <form className={showForm ? "datapointForm formVisible" : "datapointForm formInvisible"} onSubmit={submitForm}>
+          <span className="formField">
+            <label htmlFor="datapointDate">Date</label>
+            <input type="date" id="datapointDate" name="datapointDate" required></input>
+          </span>
+          <span className="formField">
+            <label htmlFor="datapointValue">Value</label>
+            <input type="number" id="datapointValue" name="datapointValue" required></input>
+          </span>
+          <button className="formSaveButton" type="submit"><img src={CheckMark}></img></button>
+        </form>
+        {chartData ? <Line options={options} data={chartData} /> : null}
+      </div>
+      <button className="workoutBottomButton" onClick={() => setShowForm(!showForm)}>Add Datapoint</button>
     </div>
   )
 }

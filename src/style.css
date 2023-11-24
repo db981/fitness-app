@@ -3,33 +3,41 @@
   src: url('./fonts/Montserrat/Montserrat-VariableFont_wght.ttf');
 }
 
-*{
+* {
   font-family: Montserrat;
 }
 
-h1, h2, h3, h4, h5, h6{
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   margin: 0;
   padding: 0;
 }
 
-button:hover, input[type="submit"]:hover{
+button:hover,
+input[type="submit"]:hover {
   cursor: pointer;
 }
 
-html, body, .app{
+html,
+body,
+.app {
   min-height: 100vh;
-  width: 100vw;
+  width: 100%;
   margin: 0;
   padding: 0;
 }
 
-.app{
+.app {
   display: grid;
   grid-template-rows: 60px 1fr;
-  grid-template-columns: 100vw;
+  grid-template-columns: 1fr;
 }
 
-header{
+header {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -40,27 +48,28 @@ header{
   color: white;
 }
 
-.downloadIcon{
+.downloadIcon {
   position: absolute;
-  right: 10px;
+  right: 0px;
   height: 75%;
 }
 
-.uploadIcon{
+.uploadIcon {
   position: absolute;
-  right: 75px;
+  right: 65px;
   height: 75%;
   rotate: 180deg;
 }
 
-.downloadIcon:hover, .uploadIcon:hover{
+.downloadIcon:hover,
+.uploadIcon:hover {
   cursor: pointer;
 }
 
-.workoutCardArea{
+.workoutCardArea {
   display: grid;
   justify-content: center;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 600px));
+  grid-template-columns: repeat(auto-fill, minmax(400px, 600px));
   grid-auto-rows: min-content;
   gap: 15px;
 
@@ -69,12 +78,144 @@ header{
   background-color: white;
 }
 
-.workoutSelect{
+@media only screen and (max-width: 400px) {
+  .workoutCardArea {
+    grid-template-columns: 1fr;
+  }
+
+  header {
+    justify-content: left;
+  }
+}
+
+.workoutSelect {
   grid-column: 1 / -1;
   width: 250px;
-  
+
   font-size: 24px;
 }
+
+.workoutCard {
+  display: grid;
+  grid-template-rows: 50px 1fr 45px;
+  border: 1px solid rgb(84, 84, 236);
+  border-radius: 16px;
+}
+
+.workoutCardTitle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  height: 100%;
+
+  color: rgb(84, 84, 236);
+}
+
+.cardMiddle {
+  position: relative;
+  min-height: 200px;
+}
+
+.workoutDelete {
+  height: 80%;
+
+  position: absolute;
+  right: 0;
+}
+
+.workoutDelete:hover {
+  cursor: pointer;
+}
+
+.workoutBottomButton {
+  width: 100%;
+
+  border-bottom-left-radius: 16px;
+  border-bottom-right-radius: 16px;
+  border: transparent;
+
+  font-size: 20px;
+  transition: background-color 1s, color 0.5s;
+}
+
+.workoutBottomButton:hover {
+  background-color: rgb(157, 157, 250);
+  color: white;
+}
+
+.formVisible {
+  opacity: 1;
+  background-color: white;
+}
+
+.formInvisible {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.datapointForm {
+  display: grid;
+  grid-auto-rows: 30px;
+  justify-items: center;
+  align-content: space-evenly;
+
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  transition: opacity 0.25s;
+  font-size: 24px;
+}
+
+.formField {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  justify-self: center;
+
+  width: 90%;
+}
+
+.formField>label {
+  width: 25%;
+}
+
+.formField>input {
+  width: 70%;
+  height: 100%;
+  box-sizing: border-box;
+}
+
+.formSaveButton {
+  height: 50px;
+  width: 50px;
+
+  border-radius: 32px;
+  border-color: rgb(84, 84, 236);
+
+  transition: background-color 1s;
+}
+
+.formSaveButton:hover {
+  background-color: rgb(157, 157, 250);
+}
+
+.formSaveButton>img {
+  height: 50%;
+}
+
+.workoutForm {
+  display: grid;
+  grid-auto-rows: 30px;
+  justify-items: center;
+  align-content: space-evenly;
+  gap: 20px;
+
+  padding-bottom: 10px;
+  font-size: 24px;
+}
+
+/*
 
 .workoutCard{
   display: grid;
@@ -252,3 +393,5 @@ header{
 
   font-size: 28px;
 }
+
+*/
