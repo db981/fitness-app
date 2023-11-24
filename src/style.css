@@ -69,7 +69,7 @@ header {
 .workoutCardArea {
   display: grid;
   justify-content: center;
-  grid-template-columns: repeat(auto-fill, minmax(400px, 600px));
+  grid-template-columns: repeat(auto-fill, minmax(min-content, 600px));
   grid-auto-rows: min-content;
   gap: 15px;
 
@@ -78,7 +78,7 @@ header {
   background-color: white;
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 400px) {
   .workoutCardArea {
     grid-template-columns: 1fr;
   }
@@ -132,7 +132,6 @@ header {
 .workoutBottomButton {
   align-self: flex-end;
   height: 100%;
-  width: 100%;
 
   border-bottom-left-radius: 16px;
   border-bottom-right-radius: 16px;
