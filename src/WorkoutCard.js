@@ -33,16 +33,6 @@ export const options = {
         stepSize: 5
       }
     },
-    x: {
-      title: {
-        display: true,
-        align: "start",
-        text: "Date"
-      },
-      ticks: {
-        display: false
-      }
-    }
   },
 };
 
