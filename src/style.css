@@ -26,7 +26,7 @@ html,
 body,
 .app {
   min-height: 100vh;
-  width: 100%;
+
   margin: 0;
   padding: 0;
 }
@@ -41,7 +41,6 @@ header {
   display: flex;
   justify-content: center;
   align-items: center;
-
   position: relative;
 
   background-color: rgb(84, 84, 236);
@@ -51,14 +50,16 @@ header {
 .downloadIcon {
   position: absolute;
   right: 0px;
+
   height: 75%;
 }
 
 .uploadIcon {
   position: absolute;
   right: 65px;
-  height: 75%;
   rotate: 180deg;
+
+  height: 75%;
 }
 
 .downloadIcon:hover,
@@ -78,20 +79,25 @@ header {
   background-color: white;
 }
 
-@media only screen and (max-width: 400px) {
+@media only screen and (max-width: 600px) {
   .workoutCardArea {
-    grid-template-columns: 1fr;
+    /* simulate padding because padding causing overflow */
+    grid-template-columns: calc(100% - 30px);
+    padding-left: 0;
+    padding-right: 0;
   }
 
   header {
     justify-content: left;
+
     font-size: 75%;
   }
 }
 
 .workoutSelect {
   grid-column: 1 / -1;
-  width: 250px;
+
+  max-width: 250px;
 
   font-size: 24px;
 }
@@ -99,6 +105,7 @@ header {
 .workoutCard {
   display: grid;
   grid-template-rows: 50px 1fr 45px;
+
   border: 1px solid rgb(84, 84, 236);
   border-radius: 16px;
 }
@@ -108,16 +115,17 @@ header {
   justify-content: center;
   align-items: center;
   position: relative;
+
   height: 100%;
 
   color: rgb(84, 84, 236);
 }
 
 .workoutDelete {
-  height: 80%;
-
   position: absolute;
   right: 0;
+
+  height: 80%;
 }
 
 .workoutDelete:hover {
@@ -126,13 +134,17 @@ header {
 
 .cardMiddle {
   position: relative;
+
   min-height: 200px;
 }
 
 .workoutBottomButton {
   align-self: flex-end;
+
   height: 100%;
 
+  margin: 0;
+  padding: 0;
   border-bottom-left-radius: 16px;
   border-bottom-right-radius: 16px;
   border: transparent;
@@ -162,13 +174,14 @@ header {
   grid-auto-rows: 30px;
   justify-items: center;
   align-content: space-evenly;
-
   position: absolute;
+
   height: 100%;
   width: 100%;
-  transition: opacity 0.5s, background-color 0.5s;
+
   font-size: 24px;
   background-color: white;
+  transition: opacity 0.5s, background-color 0.5s;
 }
 
 .workoutForm {
@@ -179,6 +192,7 @@ header {
   gap: 20px;
 
   padding-bottom: 10px;
+
   font-size: 24px;
 }
 
@@ -199,6 +213,7 @@ header {
   min-width: 70%;
   height: 100%;
   box-sizing: border-box;
+
   font-size: 20px;
 }
 
