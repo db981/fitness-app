@@ -26,6 +26,7 @@ html,
 body,
 .app {
   min-height: 100vh;
+  width: 100%;
 
   margin: 0;
   padding: 0;
@@ -70,28 +71,13 @@ header {
 .workoutCardArea {
   display: grid;
   justify-content: center;
-  grid-template-columns: repeat(auto-fill, minmax(min-content, 600px));
+  grid-template-columns: repeat(auto-fill, 600px);
   grid-auto-rows: min-content;
   gap: 15px;
 
   padding: 15px;
 
   background-color: white;
-}
-
-@media only screen and (max-width: 600px) {
-  .workoutCardArea {
-    /* simulate padding because padding causing overflow */
-    grid-template-columns: calc(100% - 30px);
-    padding-left: 0;
-    padding-right: 0;
-  }
-
-  header {
-    justify-content: left;
-
-    font-size: 75%;
-  }
 }
 
 .workoutSelect {
@@ -104,7 +90,8 @@ header {
 
 .workoutCard {
   display: grid;
-  grid-template-rows: 50px 1fr 45px;
+  grid-template-rows: 50px 250px 45px;
+  grid-template-columns: 1fr;
 
   border: 1px solid rgb(84, 84, 236);
   border-radius: 16px;
@@ -121,6 +108,14 @@ header {
   color: rgb(84, 84, 236);
 }
 
+.workoutTitle>h2 {
+  max-width: 500px;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 .workoutDelete {
   position: absolute;
   right: 0;
@@ -135,7 +130,7 @@ header {
 .cardMiddle {
   position: relative;
 
-  min-height: 200px;
+  height: 100%;
 }
 
 .workoutBottomButton {
@@ -177,7 +172,6 @@ header {
   position: absolute;
 
   height: 100%;
-  width: 100%;
 
   font-size: 24px;
   background-color: white;
@@ -237,4 +231,23 @@ header {
 
 .formSaveButton>img {
   height: 50%;
+}
+
+@media only screen and (max-width: 600px) {
+  header {
+    justify-content: left;
+
+    font-size: 75%;
+  }
+
+  .workoutCardArea {
+    /* simulate padding because padding causing overflow */
+    grid-template-columns: calc(100% - 30px);
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .workoutTitle>h2 {
+    max-width: 75vw;
+  }
 }

@@ -25,7 +25,7 @@ ChartJS.register(
 
 export const options = {
   responsive: true,
-  maintainAspectRatio: true,
+  maintainAspectRatio: false,
   scales: {
     y:
     {
